@@ -21,9 +21,11 @@ SNS「よりみち」趣味の口コミ匿名SNS
 ```bash
 docker build -t yorimichi . # イメージを作る
 docker run -p 5000:5000 yorimichi # 起動する
-```
+
 ブラウザで　http://localhost:5000　を開くと「よりみち」と表示される。
 停止は　ctrl + C
+```
+
 
 ## 詰まったメモ
 9/23 記述
