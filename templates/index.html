@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>よりみち</title>
+</head>
+<body>
+	<h1>よりみち</h1>
+{% for post in posts %}
+	<div>
+		<p>{{ post.body }}</p>
+		<p>{{ post.category }} / {{ post.prefecture }}</p>
+	</div>
+{% endfor %}
+</body>
+</html>
+

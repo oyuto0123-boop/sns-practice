@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 import os
 import pymysql
@@ -22,7 +22,7 @@ def index():
         cur.execute("SELECT id, body, category, prefecture, created_at FROM posts ORDER BY created_at DESC")
         posts = cur.fetchall()
     conn.close()
-    return str(posts)
+    return render_template("index.html", posts=posts)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
