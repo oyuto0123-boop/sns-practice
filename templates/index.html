@@ -4,13 +4,14 @@
 <head>
 	<meta charset="utf-8">
 	<title>よりみち</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 	<h1>よりみち</h1>
 {% for post in posts %}
-	<div>
+	<div class="post">
 		<p>{{ post.body }}</p>
-		<p>{{ post.category }} / {{ post.prefecture }}</p>
+		<p class="meta">{{ post.category }} / {{ post.prefecture }}</p>
 	</div>
 {% endfor %}
 </body>

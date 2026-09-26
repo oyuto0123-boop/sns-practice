@@ -1,0 +1,27 @@
+:root {
+	--paper: #E6EAEC;
+	--sumi: #172029;
+	--accent: #5A6B73;
+	--sashiiro: #6B5A8C;
+}
+
+body {
+	background: var(--paper);
+	color: var(--sumi);
+	max-width: 640px;
+	margin: 0 auto;
+	padding: 16px;
+}
+
+.post {
+	background: #fff;
+	padding: 12px 16px;
+	margin: 12px 0;
+	border-radius: 6px;
+}
+
+.meta {
+	font-size: 13px;
+	color: var(--accent);
+}
+
