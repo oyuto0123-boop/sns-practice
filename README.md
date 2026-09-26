@@ -31,14 +31,16 @@ docker compose up
 ソースを変更したときは、docker compose up --build (COPYで焼きこむため再ビルドが必要)
 
 ## 詰まったメモ
-9/23 記述
+### 9/23 記述
 - Dockerfile の Python を Pyton と打ち間違え、ベースイメージのPullとコンテナ起動で失敗。
 - Docker Desktop が pause 状態でビルド不可→Resume で解決。
 - Flask だけ固定して、 Werkzeug 未固定→ url_quote の ImportError → Werkzeug==2.2.2 を追加して解決。
-9/23 追記
+
+### 9/23 追記
 - ERROR 1045 パスワードの渡し方ミス（-p の直後に空白を入れない）
 - ERROR 1406 VARCHARの桁不足。prefecture を広げて解決。同時に category も文字数拡張。
-9/26 追記
+
+### 9/26 追記
 - RuntimeError: 'cryptography' package is required → MySQL 8.0 の caching_sha2_password 認証に必要。requirements.txt に cryptography==42.0.5 を追加して解決。
 - ブラウザで日本語が二重エンコードで化けた。原因は seed.sql を流した際に mysql クライアントが latin1 で接続していたこと。mysql> から見ると正常に見えるため気づきにくい。DELETE 後、--default-character-set=utf8mb4 を付けて流し直して解決。
 - docker compose exec でリダイレクト投入するときは -T が必要（2回目）。
