@@ -10,6 +10,7 @@ services:
       DB_USER: niwatori
       DB_PASSWORD: cokecoke123
       DB_NAME: yorimichi
+      PYTHONUNBUFFERED: 1
 
   db:
     image: mysql:8.0

@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 import os
 import pymysql
@@ -17,9 +17,18 @@ def get_connection():
 
 @app.route("/")
 def index():
+    category = request.args.get("category")
     conn = get_connection()
     with conn.cursor() as cur:
-        cur.execute("SELECT id, body, category, prefecture, created_at FROM posts ORDER BY created_at DESC")
+        if category:
+            cur.execute(
+                    "SELECT id, body, category, prefecture, created_at FROM posts WHERE category = %s ORDER BY created_at DESC LIMIT 20",
+                    (category,)
+                    )
+        else:
+            cur.execute(
+                    "SELECT id, body, category, prefecture, created_at FROM posts ORDER BY created_at DESC LIMIT 20"
+                    )
         posts = cur.fetchall()
     conn.close()
     return render_template("index.html", posts=posts)

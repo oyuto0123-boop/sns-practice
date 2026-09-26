@@ -10,8 +10,11 @@
 	<h1>よりみち</h1>
 {% for post in posts %}
 	<div class="post">
-		<p>{{ post.body }}</p>
-		<p class="meta">{{ post.category }} / {{ post.prefecture }}</p>
+		<details>
+			<summary>{{ post.category }} / {{ post.prefecture }}</summary>
+			<p>{{ post.body }}</p>
+			<p class="meta">{{ post.category }} / {{ post.prefecture }}</p>
+		</details>
 	</div>
 {% endfor %}
 </body>
