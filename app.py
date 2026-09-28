@@ -20,9 +20,10 @@ def index():
     category = request.args.get("category")
     if request.method == "POST":
         body = request.form["body"]
+        category = request.form["category"]
         conn = get_connection()
         with conn.cursor() as cur:
-            cur.execute("INSERT INTO posts(body) VALUES (%s)", (body,))
+            cur.execute("INSERT INTO posts(body, category) VALUES (%s, %s)", (body, category))
         conn.commit()
         conn.close()
 
