@@ -15,9 +15,17 @@ def get_connection():
             cursorclass=pymysql.cursors.DictCursor,
     )
 
-@app.route("/")
+@app.route("/",methods=["GET", "POST"])
 def index():
     category = request.args.get("category")
+    if request.method == "POST":
+        body = request.form["body"]
+        conn = get_connection()
+        with conn.cursor() as cur:
+            cur.execute("INSERT INTO posts(body) VALUES (%s)", (body,))
+        conn.commit()
+        conn.close()
+
     conn = get_connection()
     with conn.cursor() as cur:
         if category:
