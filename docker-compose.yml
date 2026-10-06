@@ -1,6 +1,8 @@
 services:
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Docker/Flask/Dockerfile
     ports:
       - "5000:5000"
     depends_on:
@@ -10,10 +12,11 @@ services:
       DB_USER: niwatori
       DB_PASSWORD: cokecoke123
       DB_NAME: yorimichi
-      PYTHONUNBUFFERED: 1
 
   db:
-    image: mysql:8.0
+    build:
+      context: .
+      dockerfile: Docker/MySQL/Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: root_pass
       MYSQL_DATABASE: yorimichi
@@ -21,7 +24,6 @@ services:
       MYSQL_PASSWORD: cokecoke123
     volumes:
       - db_data:/var/lib/mysql
-      - ./init:/docker-entrypoint-initdb.d
-  
+
 volumes:
   db_data:
